@@ -3,9 +3,11 @@ import propTypes from "prop-types";
 
 export default function Navbar(props) {
   return (
-    <nav className="navbar navbar-expand-lg navbar-light bg-light">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="/">{props.title}</a>
+        <a className="navbar-brand" href="/">
+          {props.title}
+        </a>
         <button
           className="navbar-toggler"
           type="button"
@@ -25,7 +27,9 @@ export default function Navbar(props) {
               </a>
             </li>
             <li className="nav-item">
-              <a className="nav-link active" href="/">{props.aboutText}</a>
+              <a className="nav-link active" href="/">
+                {props.aboutText}
+              </a>
             </li>
             <li className="nav-item dropdown">
               <a
@@ -72,7 +76,7 @@ export default function Navbar(props) {
               placeholder="Search"
               aria-label="Search"
             />
-            <button className="btn btn-outline-success" type="submit">
+            <button className="btn btn-outline-primary" type="submit">
               Search
             </button>
           </form>
@@ -88,6 +92,6 @@ Navbar.propTypes = {
 };
 
 Navbar.defaultProps = {
-  title: 'Set title here',
-  aboutText: 'Set about text here',
+  title: "Set title here",
+  aboutText: "Set about text here",
 };
