@@ -1,6 +1,7 @@
 // import logo from './logo.svg';
 // import './App.css';
-// import About from "./components/About";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import About from "./components/About";
 import { useState } from "react";
 import Alert from "./components/Alert";
 import Navbar from "./components/Navbar";
@@ -41,21 +42,31 @@ function App() {
   };
   return (
     <>
-      <Navbar
-        title="TextUtils"
-        aboutText="About TextUtils"
-        mode={mode}
-        toggleMode={toggleMode}
-      />
-      <Alert alert={alert} />
-      <div className="container my-3">
-        <TextForm
-          showAlert={showAlert}
-          heading="Enter your text to analyze below"
+      <BrowserRouter>
+        <Navbar
+          title="TextUtils"
+          aboutText="About TextUtils"
           mode={mode}
+          toggleMode={toggleMode}
         />
-        {/* <About /> */}
-      </div>
+        <Alert alert={alert} />
+        <div className="container my-3">
+          <Routes>
+            <Route exact path="/about" element={<About />} />
+            <Route
+              exact
+              path="/"
+              element={
+                <TextForm
+                  showAlert={showAlert}
+                  heading="Enter your text to analyze below"
+                  mode={mode}
+                />
+              }
+            />
+          </Routes>
+        </div>
+      </BrowserRouter>
     </>
   );
 }
