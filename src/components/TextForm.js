@@ -5,12 +5,14 @@ export default function TextForm(props) {
     //console.log("Upper case was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
+    props.showAlert("Converted to uppercase", "success");
   };
 
   const handleLoClick = () => {
     //console.log("Upper case was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
+    props.showAlert("Converted to lowercase", "success");
   };
 
   const handleOnChange = (event) => {
@@ -26,10 +28,15 @@ export default function TextForm(props) {
       uppercaseword += element.charAt(0).toUpperCase() + element.slice(1) + " ";
     });
     setText(uppercaseword);
+    props.showAlert(
+      "First letter of each word is converted to capital",
+      "success"
+    );
   };
 
   const clearText = () => {
     setText("");
+    props.showAlert("Clear all text", "success");
   };
 
   const handleCopy = () => {
@@ -43,11 +50,13 @@ export default function TextForm(props) {
       .catch(() => {
         alert("something went wrong");
       });
+    props.showAlert("Texts are copied to clipboard", "success");
   };
 
   const handleExtraSpaces = () => {
     let newText = text.split(/[ ]+/);
     setText(newText.join(" "));
+    props.showAlert("Extra spaces are removed", "success");
   };
 
   const [text, setText] = useState("");
@@ -105,7 +114,7 @@ export default function TextForm(props) {
       >
         <h2>Your text summary</h2>
         <p>
-          {text.split(" ").length} words and {text.length} characters
+          {text.split(" ").length - 1} words and {text.length} characters
         </p>
         <p>{0.008 * text.split(" ").length} Minutes read</p>
         <h2>Preview</h2>
