@@ -59,7 +59,7 @@ function App() {
               element={
                 <TextForm
                   showAlert={showAlert}
-                  heading="Enter your text to analyze below"
+                  heading="Try TeztUtil-Word Counter, Character Counter, Remove extra spaces "
                   mode={mode}
                 />
               }
