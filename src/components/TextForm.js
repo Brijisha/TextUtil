@@ -2,21 +2,18 @@ import React, { useState } from "react";
 
 export default function TextForm(props) {
   const handleUpClick = () => {
-    //console.log("Upper case was clicked" + text);
     let newText = text.toUpperCase();
     setText(newText);
     props.showAlert("Converted to uppercase", "success");
   };
 
   const handleLoClick = () => {
-    //console.log("Upper case was clicked" + text);
     let newText = text.toLowerCase();
     setText(newText);
     props.showAlert("Converted to lowercase", "success");
   };
 
   const handleOnChange = (event) => {
-    // console.log("On Change");
     setText(event.target.value);
   };
 
@@ -40,9 +37,10 @@ export default function TextForm(props) {
   };
 
   const handleCopy = () => {
-    let text = document.getElementById("mybox");
-    text.select();
-    navigator.clipboard.writeText(text.value);
+    // let text = document.getElementById("mybox");
+    // text.select();
+    // navigator.clipboard.writeText(text.value);
+    navigator.clipboard.writeText(text);
     // .then(() => {
     //   alert("successfully copied");
     // })
@@ -137,7 +135,7 @@ export default function TextForm(props) {
         <strong>
           <p>
             {
-              text.split(" ").filter((element) => {
+              text.split(/\s+/).filter((element) => {
                 return element.length !== 0;
               }).length
             }{" "}
